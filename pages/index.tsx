@@ -1,9 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const count = useSelector((state: RootState) => state.counter.value);
   return (
     <div className={styles.container}>
       <Head>
@@ -35,6 +38,13 @@ export default function Home() {
           <Link href="/sulug/1" className={styles.card}>
             <h2>SULUG &rarr;</h2>
             <p>Find in-depth information about Next.js features and SULUG.</p>
+          </Link>
+          <Link href="/features/counter" className={styles.card}>
+            <h2>REDUX &rarr;</h2>
+            <p>
+              Find in-depth information about Next.js features and REDUX ={" "}
+              {count}
+            </p>
           </Link>
         </div>
       </main>
