@@ -3,6 +3,7 @@ import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { request } from "../../../config/libraries/CfAxios";
 import { RootState } from "../../../redux/store";
+import SliderNft from "./component/slider";
 import useHome, { ReceivedProps } from "./hook";
 import HomeWrapper from "./styled";
 
@@ -34,8 +35,7 @@ const HomeLayout: FC<ReceivedProps> = ({ current, img, setImg }) => {
 
   return (
     <HomeWrapper>
-      <h1>{current}</h1>
-      <h1> count redux = {count}</h1>
+      <SliderNft />
     </HomeWrapper>
   );
 };

@@ -17,8 +17,10 @@ const ButtonWrapper = styled(Button)`
       props.variant === "warning"
         ? `${theme.Colors.warning}`
         : `${theme.Colors.while}`};
-  min-height: 38px;
-  font-size: 12px;
+  min-height: ${(props: ReceivedProps) =>
+    props.hight ? `${props.hight}px` : `38px`};
+  font-size: ${(props: ReceivedProps) =>
+    props.font ? `${props.font}px` : `12px`};
   font-weight: bold;
   min-width: 130px;
   margin: 5px;
@@ -27,6 +29,9 @@ const ButtonWrapper = styled(Button)`
   justify-content: center;
   font-family: ${theme.FontFamily.Proxima};
   border-radius: 38px;
+  > span {
+    margin: 5px;
+  }
   :hover {
     border: 1px solid
       ${(props: ReceivedProps) =>

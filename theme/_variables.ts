@@ -11,6 +11,9 @@ const variables = {
   FontFamily: {
     Proxima: "Proxima-Nova-Bold",
   },
+  Distance: {
+    header: "103px",
+  },
 };
 
 export default variables;

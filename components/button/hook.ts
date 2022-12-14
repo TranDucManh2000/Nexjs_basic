@@ -2,6 +2,8 @@ import { ButtonProps } from "antd";
 
 export type ReceivedProps = ButtonProps & {
   variant?: "default" | "warning";
+  hight?: number;
+  font?: number;
 };
 
 const useButton = (props: ReceivedProps) => {
