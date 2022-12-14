@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { request } from "../../../config/libraries/CfAxios";
 import { RootState } from "../../../redux/store";
 import SliderNft from "./component/slider";
+import TopNft from "./component/top";
 import useHome, { ReceivedProps } from "./hook";
 import HomeWrapper from "./styled";
 
@@ -36,6 +37,7 @@ const HomeLayout: FC<ReceivedProps> = ({ current, img, setImg }) => {
   return (
     <HomeWrapper>
       <SliderNft />
+      <TopNft />
     </HomeWrapper>
   );
 };
