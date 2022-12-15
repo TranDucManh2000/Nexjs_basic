@@ -11,7 +11,8 @@ const SliderWrapper = styled.div`
     background-position: center;
     color: ${theme.Colors.while};
     font-family: ${theme.FontFamily.Proxima};
-    padding: 5%;
+    padding-left: 5%;
+    padding-top: 60px;
     > div {
       max-width: 500px;
       > h1 {

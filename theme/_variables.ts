@@ -14,6 +14,13 @@ const variables = {
   Distance: {
     header: "103px",
   },
+  Hover: {
+    gray: "#303030",
+    darkYellow: "#f1c40f",
+  },
+  Background: {
+    gray: "#2b2b35",
+  },
 };
 
 export default variables;

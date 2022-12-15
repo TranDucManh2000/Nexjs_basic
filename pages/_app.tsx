@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "../redux/store";
 import styles from "../styles/Home.module.css";
 import Header from "../components/header";
+import FooterNft from "../components/footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <Header />
         <Component {...pageProps} />
+        <FooterNft />
       </Provider>
     </div>
   );

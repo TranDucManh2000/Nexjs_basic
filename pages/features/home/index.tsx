@@ -3,6 +3,8 @@ import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { request } from "../../../config/libraries/CfAxios";
 import { RootState } from "../../../redux/store";
+import ToolNft from "./component/listTool";
+import MarketNft from "./component/market";
 import SliderNft from "./component/slider";
 import TopNft from "./component/top";
 import useHome, { ReceivedProps } from "./hook";
@@ -38,6 +40,8 @@ const HomeLayout: FC<ReceivedProps> = ({ current, img, setImg }) => {
     <HomeWrapper>
       <SliderNft />
       <TopNft />
+      <MarketNft />
+      <ToolNft />
     </HomeWrapper>
   );
 };

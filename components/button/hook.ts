@@ -1,7 +1,7 @@
 import { ButtonProps } from "antd";
 
 export type ReceivedProps = ButtonProps & {
-  variant?: "default" | "warning";
+  variant?: "default" | "warning" | "yellow";
   hight?: number;
   font?: number;
 };

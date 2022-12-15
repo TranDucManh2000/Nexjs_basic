@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "../../theme";
 
 const HeaderWrapper = styled.div`
-  z-index: 1;
+  z-index: 20;
   background-color: ${theme.Colors.black};
   height: 103px;
   border-bottom: 1px solid ${theme.Colors.boder};

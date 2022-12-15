@@ -8,6 +8,7 @@ const TopWrapper = styled.div`
   .user {
     display: flex;
     flex-wrap: wrap;
+    cursor: pointer;
     > h1 {
       width: 100%;
       font-size: 39px;
@@ -28,6 +29,9 @@ const TopWrapper = styled.div`
       }
       .ant-card-meta-description {
         color: ${theme.Colors.while};
+      }
+      :hover {
+        background-color: ${theme.Hover.gray};
       }
     }
   }
@@ -54,6 +58,7 @@ const TopWrapper = styled.div`
       background-size: cover;
       background-position: center;
       position: relative;
+      cursor: pointer;
       .text {
         display: none;
         color: ${theme.Colors.while};
