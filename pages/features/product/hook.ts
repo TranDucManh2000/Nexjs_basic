@@ -1,15 +1,18 @@
-import { useRouter } from "next/router";
+import { MenuProps } from "antd";
 
 export type ReceivedProps = Record<string, any>;
 
+const items: MenuProps["items"] = [
+  {
+    key: "1",
+    label: "No Item",
+  },
+];
+
 const useProduct = (props: ReceivedProps) => {
-  const router = useRouter();
-  const nexPage = (e: string) => {
-    router.push(e);
-  };
   return {
     ...props,
-    nexPage,
+    items,
   };
 };
 

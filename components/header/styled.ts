@@ -16,6 +16,7 @@ const HeaderWrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   > div {
     display: flex;
     align-items: center;
@@ -23,6 +24,10 @@ const HeaderWrapper = styled.div`
       margin-left: 50px;
       font-size: ${theme.FontSize.text125};
       color: ${theme.Colors.while};
+      :hover {
+        cursor: pointer;
+        color: ${theme.Colors.warning};
+      }
     }
   }
   @media screen and (max-width: 1600px) {

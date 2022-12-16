@@ -1,16 +1,12 @@
-import {
-  CommentOutlined,
-  HeartOutlined,
-  ShareAltOutlined,
-} from "@ant-design/icons";
-import { Avatar, Image, Tooltip } from "antd";
+import { Avatar, Image } from "antd";
 import { FC } from "react";
-import { arrayCoins, arrayCoinsIcon } from "../../public/iconCoins/coins";
 import ButtonCf from "../button";
+import GropComment from "../gropComment";
+import ListCoins from "../listCoins";
 import useProduct, { ReceivedProps } from "./hook";
 import ProductWrapper from "./styled";
 
-const ProductLayout: FC<ReceivedProps> = ({ arrayProduct }) => {
+const ProductLayout: FC<ReceivedProps> = ({ arrayProduct, nexPage }) => {
   return (
     <ProductWrapper>
       {arrayProduct
@@ -22,28 +18,9 @@ const ProductLayout: FC<ReceivedProps> = ({ arrayProduct }) => {
                 preview={false}
               />
               <h2>Blessing</h2>
-              <div className="share">
-                <span>
-                  <HeartOutlined className="icon" /> 0
-                </span>
-                <span>
-                  <CommentOutlined className="icon" /> 0
-                </span>
-                <span>
-                  <ShareAltOutlined className="icon" />
-                  share
-                </span>
-              </div>
+              <GropComment heart={0} comment={0} />
               <h5>Blockchain</h5>
-              <div className="listcoin">
-                {arrayCoinsIcon
-                  ? arrayCoinsIcon.map((coins: arrayCoins, index: number) => (
-                      <Tooltip key={index} placement="top" title={coins.name}>
-                        {coins.svg}
-                      </Tooltip>
-                    ))
-                  : ""}
-              </div>
+              <ListCoins />
               <div className="info">
                 <h5>Owned by</h5>
                 <h3>0.153 BNB</h3>
@@ -61,10 +38,18 @@ const ProductLayout: FC<ReceivedProps> = ({ arrayProduct }) => {
               <div className="info">
                 <div></div>
                 <div className="grBtn">
-                  <ButtonCf variant="yellow" hight={27}>
+                  <ButtonCf
+                    onClick={() => nexPage("/features/product/1")}
+                    variant="yellow"
+                    hight={27}
+                  >
                     View NFT
                   </ButtonCf>
-                  <ButtonCf variant="warning" hight={27}>
+                  <ButtonCf
+                    onClick={() => nexPage("/features/product/1")}
+                    variant="warning"
+                    hight={27}
+                  >
                     Buy Now
                   </ButtonCf>
                 </div>

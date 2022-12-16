@@ -35,6 +35,9 @@ const FooterContainer = styled.div`
       > span {
         margin-right: 15px;
         cursor: pointer;
+        :hover {
+          color: ${theme.Colors.warning};
+        }
       }
     }
   }
