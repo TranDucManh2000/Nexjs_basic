@@ -1,12 +1,13 @@
 import { Image } from "antd";
 import { FC } from "react";
+import LoginNft from "../../pages/features/login";
 import ButtonCf from "../button";
 import SearchNft from "../search";
 import useHeader, { dataMenus } from "./hook";
 import { ReceivedProps } from "./hook";
 import HeaderWrapper from "./styled";
 
-const HeaderLayout: FC<ReceivedProps> = ({ dataMenu }) => {
+const HeaderLayout: FC<ReceivedProps> = ({ dataMenu, nexPage }) => {
   return (
     <HeaderWrapper>
       <div>
@@ -18,7 +19,7 @@ const HeaderLayout: FC<ReceivedProps> = ({ dataMenu }) => {
         />
         <div>
           {dataMenu.map((vl: dataMenus, index: number) => (
-            <span className="text" key={index}>
+            <span className="text" key={index} onClick={() => nexPage(vl.url)}>
               {vl.name}
             </span>
           ))}
@@ -27,7 +28,7 @@ const HeaderLayout: FC<ReceivedProps> = ({ dataMenu }) => {
       <div>
         <SearchNft />
         <ButtonCf variant="default">Create NFT</ButtonCf>
-        <ButtonCf variant="warning">Register/Login</ButtonCf>
+        <LoginNft />
       </div>
     </HeaderWrapper>
   );

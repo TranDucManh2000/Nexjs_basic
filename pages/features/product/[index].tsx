@@ -39,11 +39,9 @@ const ProductLayout: FC<ReceivedProps> = ({ items }) => {
             <Input className="input" placeholder="comment" />
             <ButtonCf variant="warning">Submit</ButtonCf>
           </div>
-          <h1 style={{ marginTop: 30 }}>Comment</h1>
-          <hr />
           <div style={{ marginTop: 30 }}>
             <div>
-              <AvatarNft title="@TranManh" description="12h" />
+              <AvatarNft title="@TranManh" timeLine="12 hours ago" />
               <div className="comment">
                 compiled client and server successfully in 680 ms (2948 modules)
               </div>
@@ -87,7 +85,7 @@ const ProductLayout: FC<ReceivedProps> = ({ items }) => {
             </ButtonCf>
           </div>
           <CollapseNft variant="propeties" key={1} header="Propeties" />
-          <CollapseNft variant="history" key={1} header="History" />
+          <CollapseNft variant="history" key={2} header="History" />
         </div>
       </div>
     </ProductWrapper>

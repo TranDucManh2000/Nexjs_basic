@@ -55,10 +55,7 @@ const ProductWrapper = styled.div`
       .comment {
         max-width: 500px;
         color: ${theme.Colors.while};
-        margin: 20px;
-        border: 1px solid ${theme.Colors.boder};
-        padding: 20px;
-        border-radius: 10px;
+        margin-left: 60px;
       }
     }
   }

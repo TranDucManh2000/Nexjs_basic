@@ -1,5 +1,6 @@
-import { Avatar, Image } from "antd";
+import { Image } from "antd";
 import { FC } from "react";
+import AvatarNft from "../avatar";
 import ButtonCf from "../button";
 import GropComment from "../gropComment";
 import ListCoins from "../listCoins";
@@ -26,13 +27,7 @@ const ProductLayout: FC<ReceivedProps> = ({ arrayProduct, nexPage }) => {
                 <h3>0.153 BNB</h3>
               </div>
               <div className="info">
-                <div>
-                  <Avatar
-                    style={{ width: 40, height: 40, marginRight: 10 }}
-                    src={`https://www.dungplus.com/wp-content/uploads/2019/12/girl-xinh-600x600.jpg`}
-                  />
-                  <span>@Mansu</span>
-                </div>
+                <AvatarNft title="@Mansu" dataLink="/features/profile" />
                 <h6>$ 0.153 </h6>
               </div>
               <div className="info">

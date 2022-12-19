@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+
 export type ReceivedProps = Record<string, any>;
 
 export interface dataMenus {
@@ -9,26 +11,31 @@ export interface dataMenus {
 const dataMenu = [
   {
     name: "Marketplace",
-    url: "url",
+    url: "/",
   },
   {
     name: "Social Feed",
-    url: "url",
+    url: "/",
   },
   {
     name: "Trends",
-    url: "url",
+    url: "/",
   },
   {
     name: "Mystery Box",
-    url: "url",
+    url: "/",
   },
 ];
 
 const useHeader = (props: ReceivedProps) => {
+  const router = useRouter();
+  const nexPage = (e: string) => {
+    router.push(e);
+  };
   return {
     ...props,
     dataMenu,
+    nexPage,
   };
 };
 

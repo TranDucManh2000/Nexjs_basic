@@ -10,6 +10,11 @@ const AvatarWrapper = styled.div`
     align-items: center;
     .ant-card-meta-title {
       font-weight: bold;
+      .timeLine {
+        font-weight: 200;
+        color: ${theme.Colors.boder};
+        margin-left: 15px;
+      }
     }
     .ant-card-meta-description {
       color: ${theme.Colors.boder};

@@ -3,6 +3,8 @@ export type ReceivedProps = AvatarProps & {
   variant?: "default" | "onlyName";
   title?: string;
   description?: string;
+  timeLine?: string;
+  dataLink?: string;
 };
 
 const useAvatar = (props: ReceivedProps) => {
