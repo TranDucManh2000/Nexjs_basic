@@ -5,16 +5,8 @@ export type ReceivedProps = Record<string, any>;
 const useLogin = (props: ReceivedProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
+  const setModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   const onFinish = (values: any) => {
@@ -27,9 +19,7 @@ const useLogin = (props: ReceivedProps) => {
   return {
     ...props,
     isModalOpen,
-    showModal,
-    handleOk,
-    handleCancel,
+    setModal,
     onFinish,
     onFinishFailed,
   };

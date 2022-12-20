@@ -1,30 +1,28 @@
-import { Button, Checkbox, Form, Input, Modal } from "antd";
+import { Form, Input } from "antd";
 import { FC } from "react";
 import ButtonCf from "../../../components/button";
+import Modal from "../../../components/Modal";
+import TextInput from "../../../components/textInput";
 import useLogin, { ReceivedProps } from "./hook";
 import LoginWrapper from "./styled";
 
 const LoginLayout: FC<ReceivedProps> = ({
   isModalOpen,
-  showModal,
-  handleOk,
-  handleCancel,
+  setModal,
   onFinish,
   onFinishFailed,
 }) => {
   return (
     <LoginWrapper>
-      <ButtonCf variant="warning" onClick={showModal}>
+      <ButtonCf variant="warning" onClick={setModal}>
         Register/Login
       </ButtonCf>
       <Modal
-        title="Login"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={false}
+        closeModal={setModal}
+        headerTitle="Login"
+        header={true}
+        isShowing={isModalOpen}
       >
-        <h1>aaaa</h1>
         <Form
           name="basic"
           initialValues={{ remember: true }}
@@ -36,20 +34,21 @@ const LoginLayout: FC<ReceivedProps> = ({
             name="username"
             rules={[{ required: true, message: "Please input your username!" }]}
           >
-            <Input placeholder="Email Address or Username" />
+            <TextInput placeholder="Email Address or Username" />
           </Form.Item>
 
           <Form.Item
             name="password"
             rules={[{ required: true, message: "Please input your password!" }]}
           >
-            <Input.Password placeholder="password" />
+            <TextInput variant="password" placeholder="password" />
           </Form.Item>
 
           <Form.Item>
             <ButtonCf
               style={{ width: "100%", marginLeft: "-5px" }}
               variant="warning"
+              onClick={() => setModal()}
             >
               Login
             </ButtonCf>
