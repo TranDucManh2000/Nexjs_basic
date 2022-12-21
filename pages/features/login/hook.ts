@@ -4,6 +4,7 @@ export type ReceivedProps = Record<string, any>;
 
 const useLogin = (props: ReceivedProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [typeModal, setTypeModal] = useState(true);
 
   const setModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -22,6 +23,8 @@ const useLogin = (props: ReceivedProps) => {
     setModal,
     onFinish,
     onFinishFailed,
+    typeModal,
+    setTypeModal,
   };
 };
 

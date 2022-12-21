@@ -1,4 +1,4 @@
-import { Form, Input } from "antd";
+import { Form } from "antd";
 import { FC } from "react";
 import ButtonCf from "../../../components/button";
 import Modal from "../../../components/Modal";
@@ -11,6 +11,8 @@ const LoginLayout: FC<ReceivedProps> = ({
   setModal,
   onFinish,
   onFinishFailed,
+  typeModal,
+  setTypeModal,
 }) => {
   return (
     <LoginWrapper>
@@ -19,41 +21,117 @@ const LoginLayout: FC<ReceivedProps> = ({
       </ButtonCf>
       <Modal
         closeModal={setModal}
-        headerTitle="Login"
+        headerTitle={typeModal ? "Login" : "Register"}
         header={true}
         isShowing={isModalOpen}
       >
-        <Form
-          name="basic"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          <Form.Item
-            name="username"
-            rules={[{ required: true, message: "Please input your username!" }]}
+        {typeModal ? (
+          <Form
+            name="basic"
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            autoComplete="off"
           >
-            <TextInput placeholder="Email Address or Username" />
-          </Form.Item>
-
-          <Form.Item
-            name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
-          >
-            <TextInput variant="password" placeholder="password" />
-          </Form.Item>
-
-          <Form.Item>
-            <ButtonCf
-              style={{ width: "100%", marginLeft: "-5px" }}
-              variant="warning"
-              onClick={() => setModal()}
+            <h1>Welcome!</h1>
+            <Form.Item
+              name="username"
+              rules={[
+                { required: true, message: "Please input your username!" },
+              ]}
             >
-              Login
-            </ButtonCf>
-          </Form.Item>
-        </Form>
+              <TextInput placeholder="Email Address or Username" />
+            </Form.Item>
+
+            <Form.Item
+              name="password"
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
+            >
+              <TextInput variant="password" placeholder="password" />
+            </Form.Item>
+
+            <Form.Item>
+              <ButtonCf
+                style={{ width: "100%", marginLeft: "-5px" }}
+                variant="warning"
+                onClick={() => setModal()}
+              >
+                Login
+              </ButtonCf>
+            </Form.Item>
+            <Form.Item>
+              <p className="footer">
+                Don’t have an account?
+                <span onClick={() => setTypeModal(!typeModal)}>
+                  Create Account
+                </span>
+              </p>
+            </Form.Item>
+          </Form>
+        ) : (
+          <Form
+            name="basic"
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            autoComplete="off"
+          >
+            <h1>Welcome! </h1>
+            <p>Register for free to Buy, Sell & Create NFTs</p>
+            <Form.Item
+              name="username"
+              rules={[
+                { required: true, message: "Please input your username!" },
+              ]}
+            >
+              <TextInput placeholder="Username" />
+            </Form.Item>
+            <Form.Item
+              name="Email"
+              rules={[
+                { required: true, message: "Please input your Email Address!" },
+              ]}
+            >
+              <TextInput placeholder="Email Address " />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
+            >
+              <TextInput variant="password" placeholder="password" />
+            </Form.Item>
+            <Form.Item
+              name="confirm"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your confirm password!",
+                },
+              ]}
+            >
+              <TextInput variant="password" placeholder="confirm password" />
+            </Form.Item>
+            <Form.Item>
+              <ButtonCf
+                style={{ width: "100%", marginLeft: "-5px" }}
+                variant="warning"
+                onClick={() => setModal()}
+              >
+                Register
+              </ButtonCf>
+            </Form.Item>
+            <Form.Item>
+              <p className="footer">
+                Already have an account?
+                <span onClick={() => setTypeModal(!typeModal)}>Login</span>
+              </p>
+            </Form.Item>
+          </Form>
+        )}
       </Modal>
     </LoginWrapper>
   );

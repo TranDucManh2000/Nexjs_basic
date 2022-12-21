@@ -1,3 +1,4 @@
+import { BellOutlined } from "@ant-design/icons";
 import { Image } from "antd";
 import { FC } from "react";
 import LoginNft from "../../pages/features/login";
@@ -7,7 +8,7 @@ import useHeader, { dataMenus } from "./hook";
 import { ReceivedProps } from "./hook";
 import HeaderWrapper from "./styled";
 
-const HeaderLayout: FC<ReceivedProps> = ({ dataMenu, nexPage }) => {
+const HeaderLayout: FC<ReceivedProps> = ({ dataMenu, nexPage, authen }) => {
   return (
     <HeaderWrapper>
       <div>
@@ -27,6 +28,9 @@ const HeaderLayout: FC<ReceivedProps> = ({ dataMenu, nexPage }) => {
       </div>
       <div>
         <SearchNft />
+        <div className="bell">
+          <BellOutlined className="icon" />
+        </div>
         <ButtonCf variant="default">Create NFT</ButtonCf>
         <LoginNft />
       </div>

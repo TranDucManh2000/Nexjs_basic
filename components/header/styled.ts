@@ -30,6 +30,21 @@ const HeaderWrapper = styled.div`
       }
     }
   }
+  .bell {
+    width: 43px;
+    height: 43px;
+    border-radius: 40px;
+    background-color: ${theme.Colors.boder};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    cursor: pointer;
+    .icon {
+      font-size: 17px;
+      color: ${theme.Colors.while};
+    }
+  }
   @media screen and (max-width: 1600px) {
     /* background-color: #fff; */
   }

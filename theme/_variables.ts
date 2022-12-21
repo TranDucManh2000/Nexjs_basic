@@ -4,6 +4,7 @@ const variables = {
     boder: "#5a5a62",
     while: "#fff",
     warning: "#f1c94a",
+    gray: "#23232e",
   },
   FontSize: {
     text125: "1.25rem",

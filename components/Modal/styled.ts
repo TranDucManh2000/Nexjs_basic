@@ -10,7 +10,6 @@ export const ModalContainer = styled.div`
   min-height: 248px;
   padding: 20px;
   color: ${theme.Colors.while};
-  font-family: ${theme.FontFamily.Proxima};
 `;
 
 export const ModalOverlay = styled.div`
@@ -45,7 +44,7 @@ export const ModalHeader = styled.div`
   align-items: center;
   padding-bottom: 10px;
   border-bottom: 1px solid ${theme.Colors.boder};
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   font-weight: bold;
   font-size: 16px;
 `;

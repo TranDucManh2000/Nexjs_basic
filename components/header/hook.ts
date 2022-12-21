@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { RootState } from "../../redux/store";
 
 export type ReceivedProps = Record<string, any>;
 
@@ -28,6 +30,7 @@ const dataMenu = [
 ];
 
 const useHeader = (props: ReceivedProps) => {
+  const authen = useSelector((state: RootState) => state.authenticator.authen);
   const router = useRouter();
   const nexPage = (e: string) => {
     router.push(e);
@@ -36,6 +39,7 @@ const useHeader = (props: ReceivedProps) => {
     ...props,
     dataMenu,
     nexPage,
+    authen,
   };
 };
 
