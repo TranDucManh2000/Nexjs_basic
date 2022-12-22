@@ -1,14 +1,49 @@
-import { BellOutlined } from "@ant-design/icons";
+import {
+  BellFilled,
+  BellOutlined,
+  LogoutOutlined,
+  ShoppingFilled,
+} from "@ant-design/icons";
 import { Image } from "antd";
 import { FC } from "react";
 import LoginNft from "../../pages/features/login";
+import AvatarNft from "../avatar";
 import ButtonCf from "../button";
+import PopoverNft from "../popover";
 import SearchNft from "../search";
 import useHeader, { dataMenus } from "./hook";
 import { ReceivedProps } from "./hook";
 import HeaderWrapper from "./styled";
 
 const HeaderLayout: FC<ReceivedProps> = ({ dataMenu, nexPage, authen }) => {
+  const bell = (
+    <div className="gropBell">
+      <div className="header">
+        <h3>Notifications</h3>
+        <span>See All</span>
+      </div>
+      <div className="body">
+        <BellFilled className="icon" />
+        <h2>You’re all caught up! </h2>
+        <span>No new notifications.</span>
+      </div>
+    </div>
+  );
+
+  const formUser = (
+    <div className="avatar">
+      <AvatarNft title="@TranManh" description="view profile" />
+      <ButtonCf className="btn" variant="warning">
+        Connect Wallet
+      </ButtonCf>
+      <div>
+        <ShoppingFilled className="outIcon" /> Shopping Cart
+      </div>
+      <div>
+        <LogoutOutlined className="outIcon" /> Logout
+      </div>
+    </div>
+  );
   return (
     <HeaderWrapper>
       <div>
@@ -28,11 +63,31 @@ const HeaderLayout: FC<ReceivedProps> = ({ dataMenu, nexPage, authen }) => {
       </div>
       <div>
         <SearchNft />
-        <div className="bell">
-          <BellOutlined className="icon" />
-        </div>
+        {authen && (
+          <>
+            <PopoverNft active={true} content={bell}>
+              <div className="bell">
+                <BellOutlined className="icon" />
+              </div>
+            </PopoverNft>
+            <div className="bell">
+              <ShoppingFilled
+                onClick={() => nexPage("/features/cart")}
+                className="icon"
+              />
+            </div>
+          </>
+        )}
         <ButtonCf variant="default">Create NFT</ButtonCf>
-        <LoginNft />
+        {authen ? (
+          <PopoverNft active={true} content={formUser}>
+            <div>
+              <AvatarNft />
+            </div>
+          </PopoverNft>
+        ) : (
+          <LoginNft />
+        )}
       </div>
     </HeaderWrapper>
   );

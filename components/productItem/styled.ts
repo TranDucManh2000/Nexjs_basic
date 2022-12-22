@@ -4,12 +4,13 @@ import theme from "../../theme";
 const ProductWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  margin-top: 30px;
+  justify-content: left;
+  gap: 15px;
   .marketItem {
-    margin-top: 30px;
     background-color: ${theme.Background.gray};
     width: 24%;
-    height: 780px;
+    min-height: 680px;
     border-radius: 10px;
     padding: 10px;
     cursor: pointer;
@@ -34,6 +35,21 @@ const ProductWrapper = styled.div`
       .grBtn {
         display: flex;
       }
+    }
+  }
+  @media screen and (max-width: 1800px) {
+    .marketItem {
+      width: 32%;
+    }
+  }
+  @media screen and (max-width: 1500px) {
+    .marketItem {
+      width: 48%;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .marketItem {
+      width: 90%;
     }
   }
 `;

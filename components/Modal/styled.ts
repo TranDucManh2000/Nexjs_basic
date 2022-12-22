@@ -13,6 +13,14 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalOverlay = styled.div`
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -23,6 +31,7 @@ export const ModalOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fade-in 0.5s;
 `;
 
 export const ModalTitle = styled.div`

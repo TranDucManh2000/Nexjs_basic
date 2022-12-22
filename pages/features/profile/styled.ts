@@ -20,7 +20,8 @@ const ProfileBody = styled.div`
     display: flex;
     flex-wrap: wrap;
     .user {
-      width: 100%;
+      min-width: 302px;
+      /* max-height: 497px; */
       background-color: ${theme.Colors.black};
       border-radius: 20px;
       border: solid 0.5px ${theme.Colors.boder};
@@ -57,6 +58,15 @@ const ProfileBody = styled.div`
         border: 1px solid ${theme.Colors.boder};
         min-width: 150px;
         margin-bottom: 30px;
+      }
+      .follow {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        .icon {
+          font-size: 35px;
+          cursor: pointer;
+        }
       }
       .gropLike {
         display: flex;
@@ -100,4 +110,24 @@ const ProfileBody = styled.div`
   }
 `;
 
-export { ProfileWrapper, ProfileBody };
+const YouNFT = styled.div`
+  .youheader {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  > div {
+    width: 100%;
+  }
+  .formNft {
+    color: ${theme.Colors.while};
+    p {
+      color: ${theme.Colors.boder};
+    }
+    h3 {
+      color: ${theme.Colors.while};
+    }
+  }
+`;
+
+export { ProfileWrapper, ProfileBody, YouNFT };
