@@ -13,6 +13,7 @@ const LoginLayout: FC<ReceivedProps> = ({
   onFinishFailed,
   typeModal,
   setTypeModal,
+  onRegister,
 }) => {
   return (
     <LoginWrapper>
@@ -56,7 +57,7 @@ const LoginLayout: FC<ReceivedProps> = ({
               <ButtonCf
                 style={{ width: "100%", marginLeft: "-5px" }}
                 variant="warning"
-                onClick={() => setModal()}
+                htmlType="submit"
               >
                 Login
               </ButtonCf>
@@ -74,14 +75,14 @@ const LoginLayout: FC<ReceivedProps> = ({
           <Form
             name="basic"
             initialValues={{ remember: true }}
-            onFinish={onFinish}
+            onFinish={onRegister}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
           >
             <h1>Welcome! </h1>
             <p>Register for free to Buy, Sell & Create NFTs</p>
             <Form.Item
-              name="username"
+              name="name"
               rules={[
                 { required: true, message: "Please input your username!" },
               ]}
@@ -89,7 +90,7 @@ const LoginLayout: FC<ReceivedProps> = ({
               <TextInput placeholder="Username" />
             </Form.Item>
             <Form.Item
-              name="Email"
+              name="email"
               rules={[
                 { required: true, message: "Please input your Email Address!" },
               ]}
@@ -119,7 +120,7 @@ const LoginLayout: FC<ReceivedProps> = ({
               <ButtonCf
                 style={{ width: "100%", marginLeft: "-5px" }}
                 variant="warning"
-                onClick={() => setModal()}
+                htmlType="submit"
               >
                 Register
               </ButtonCf>

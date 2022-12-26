@@ -18,7 +18,7 @@ const ProductLayout: FC<ReceivedProps> = ({ arrayProduct, nexPage }) => {
                 src="https://www.dungplus.com/wp-content/uploads/2019/12/girl-xinh-600x600.jpg"
                 preview={false}
               />
-              <h2>Blessing</h2>
+              <h2>{item.name}</h2>
               <GropComment heart={0} comment={0} />
               <h5>Blockchain</h5>
               <ListCoins />

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { axiosCf } from "../../../../../config/libraries/CfAxios";
 export type ReceivedProps = Record<string, any>;
 
 export interface arrayCategory {
@@ -30,14 +31,22 @@ const listCategory = [
   },
 ];
 
-const arrayProduct = [1, 2, 3, 4];
-
 const useMarket = (props: ReceivedProps) => {
   const [inMarket, setInMarket] = useState<number>(0);
+  const [arrayProduct, setArrayProduct] = useState([]);
 
   const onMarket = (e: number) => {
     setInMarket(e);
   };
+
+  useEffect(() => {
+    axiosCf.get("/product").then(function (response: any) {
+      response.data.status === 200
+        ? setArrayProduct(response.data.result)
+        : null;
+    });
+  }, []);
+
   return {
     ...props,
     listCategory,

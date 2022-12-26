@@ -1,17 +1,42 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { axiosCf } from "../../../config/libraries/CfAxios";
+import { setAuthen } from "./authenSlice";
 
 export type ReceivedProps = Record<string, any>;
 
 const useLogin = (props: ReceivedProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [typeModal, setTypeModal] = useState(true);
+  const dispatch = useDispatch();
 
   const setModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    axiosCf
+      .post("user/login", {
+        email: values.username,
+        password: values.password,
+      })
+      .then(function (response) {
+        response.data.status === 200
+          ? dispatch(setAuthen(response.data.accsetToken)) && setModal()
+          : null;
+      });
+  };
+
+  const onRegister = (values: any) => {
+    axiosCf
+      .post("/user/register", {
+        email: values.email,
+        password: values.password,
+        name: values.name,
+      })
+      .then(function (response) {
+        response.data.status === 200 ? setModal() : null;
+      });
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -25,6 +50,7 @@ const useLogin = (props: ReceivedProps) => {
     onFinishFailed,
     typeModal,
     setTypeModal,
+    onRegister,
   };
 };
 

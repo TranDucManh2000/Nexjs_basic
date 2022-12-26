@@ -6,7 +6,7 @@ export interface AuthenState {
 }
 
 const initialState: AuthenState = {
-  authen: "authen",
+  authen: "",
 };
 
 export const authenSlice = createSlice({

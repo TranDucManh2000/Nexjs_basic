@@ -15,7 +15,12 @@ import useHeader, { dataMenus } from "./hook";
 import { ReceivedProps } from "./hook";
 import HeaderWrapper from "./styled";
 
-const HeaderLayout: FC<ReceivedProps> = ({ dataMenu, nexPage, authen }) => {
+const HeaderLayout: FC<ReceivedProps> = ({
+  dataMenu,
+  nexPage,
+  authen,
+  loginOut,
+}) => {
   const bell = (
     <div className="gropBell">
       <div className="header">
@@ -39,7 +44,7 @@ const HeaderLayout: FC<ReceivedProps> = ({ dataMenu, nexPage, authen }) => {
       <div>
         <ShoppingFilled className="outIcon" /> Shopping Cart
       </div>
-      <div>
+      <div onClick={loginOut}>
         <LogoutOutlined className="outIcon" /> Logout
       </div>
     </div>

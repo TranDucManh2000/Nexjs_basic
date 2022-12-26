@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ButtonCf from "../../../components/button";
-import { RootState } from "../../../redux/store";
 import { decrement, increment } from "./counterSlice";
+import { count } from "./countSelector";
 
 const Counter = () => {
-  const count = useSelector((state: RootState) => state.counter.value);
+  const counts = useSelector(count);
   const dispatch = useDispatch();
 
   return (
@@ -19,7 +19,7 @@ const Counter = () => {
         >
           Increment
         </ButtonCf>
-        <span>{count}</span>
+        <h1 style={{ color: "#fff" }}>{counts}</h1>
         <ButtonCf
           variant="warning"
           aria-label="Decrement value"
