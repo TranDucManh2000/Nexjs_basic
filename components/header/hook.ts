@@ -1,7 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { getAuthent } from "../../config/libraries/CfAxios";
+import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { setAuthen } from "../../pages/features/login/authenSlice";
 
 export type ReceivedProps = Record<string, any>;
 
@@ -31,15 +32,25 @@ const dataMenu = [
 ];
 
 const useHeader = (props: ReceivedProps) => {
-  const authen = useSelector((state: RootState) => state.authenticator.authen);
+  const authenStore = useSelector(
+    (state: RootState) => state.authenticator.authen
+  );
+  const [authen, setAuthent] = useState<any>("");
   const router = useRouter();
-  const dispatch = useDispatch();
+
   const nexPage = (e: string) => {
     router.push(e);
   };
+
   const loginOut = () => {
-    dispatch(setAuthen(""));
+    localStorage.setItem("authent", "");
+    setAuthent("");
   };
+
+  useEffect(() => {
+    setAuthent(getAuthent());
+  }, [authenStore]);
+
   return {
     ...props,
     dataMenu,

@@ -10,8 +10,18 @@ const useLogin = (props: ReceivedProps) => {
   const [typeModal, setTypeModal] = useState(true);
   const dispatch = useDispatch();
 
+  const onFinishFailed = (errorInfo: any) => {
+    console.log("Failed:", errorInfo);
+  };
+
   const setModal = () => {
     setIsModalOpen(!isModalOpen);
+  };
+
+  const addAuthen = (authent: string) => {
+    localStorage.setItem("authent", authent);
+    dispatch(setAuthen(authent));
+    setModal();
   };
 
   const onFinish = (values: any) => {
@@ -22,7 +32,7 @@ const useLogin = (props: ReceivedProps) => {
       })
       .then(function (response) {
         response.data.status === 200
-          ? dispatch(setAuthen(response.data.accsetToken)) && setModal()
+          ? addAuthen(response.data.accsetToken)
           : null;
       });
   };
@@ -39,9 +49,6 @@ const useLogin = (props: ReceivedProps) => {
       });
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
   return {
     ...props,
     isModalOpen,

@@ -6,7 +6,7 @@ import TopNft from "./component/top";
 import useHome, { ReceivedProps } from "./hook";
 import HomeWrapper from "./styled";
 
-const HomeLayout: FC<ReceivedProps> = ({ current, img, setImg }) => {
+const HomeLayout: FC<ReceivedProps> = ({ props }) => {
   return (
     <HomeWrapper>
       <SliderNft />
