@@ -6,10 +6,25 @@ export const ModalContainer = styled.div`
   background-color: ${theme.Colors.black};
   border-radius: 10px;
   font-size: 16px;
-  min-width: 556px;
+  min-width: 600px;
   min-height: 248px;
+  max-height: 650px;
   padding: 20px;
   color: ${theme.Colors.while};
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${theme.Colors.boder};
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 export const ModalOverlay = styled.div`
