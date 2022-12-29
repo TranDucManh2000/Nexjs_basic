@@ -38,7 +38,8 @@ const AdminLayout: FC<ReceivedProps> = ({
           autoComplete="off"
         >
           {columns.map((item: any, index: number) =>
-            item.title === "id" ? undefined : item.title === "categoryId" ? (
+            item.title === "id" ? undefined : item.title ===
+              "userId" ? undefined : item.title === "categoryId" ? (
               <div key={index}>
                 <h2>{item.title}</h2>
                 <Form.Item
@@ -137,14 +138,14 @@ const AdminLayout: FC<ReceivedProps> = ({
             ),
           },
           {
-            label: `Tab 2`,
+            label: `CATEGORY`,
             key: "2",
-            children: `Content of Tab Pane 2`,
+            children: `Content of Tab Pane CATEGORY`,
           },
           {
-            label: `Tab 3`,
+            label: `ACCCOUNT`,
             key: "3",
-            children: `Content of Tab Pane 3`,
+            children: `Content of Tab Pane ACCCOUNT`,
           },
         ]}
       />

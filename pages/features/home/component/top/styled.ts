@@ -20,7 +20,7 @@ const TopWrapper = styled.div`
     }
     .card {
       margin: 10px;
-      width: 440px;
+      width: 23%;
       background-color: ${theme.Colors.black};
       font-family: ${theme.FontFamily.Proxima};
       .ant-card-meta-title {
@@ -101,6 +101,16 @@ const TopWrapper = styled.div`
           display: block;
         }
       }
+    }
+  }
+  @media screen and (max-width: 1300px) {
+    .card {
+      min-width: 45%;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .card {
+      min-width: 95%;
     }
   }
 `;

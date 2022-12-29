@@ -13,6 +13,16 @@ const AdminWrapper = styled.div`
   .ant-select-selector {
     background-color: ${theme.Colors.black} !important;
     color: ${theme.Colors.while};
+    border-color: ${theme.Colors.boder} !important;
+    .ant-select-selection-placeholder {
+      color: ${theme.Colors.boder};
+    }
+    :hover {
+      border-color: ${theme.Colors.warning} !important;
+    }
+    :focus {
+      border-color: ${theme.Colors.warning} !important;
+    }
   }
 
   .ant-pagination {

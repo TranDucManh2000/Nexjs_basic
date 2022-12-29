@@ -11,6 +11,7 @@ export interface ProductReponse {
   coins: string;
   categoryId: number;
   img: string;
+  userId?: number;
 }
 
 const useAdmin = (props: ReceivedProps) => {
@@ -90,6 +91,7 @@ const useAdmin = (props: ReceivedProps) => {
           coins: values.coins,
           categoryId: values.categoryId,
           img: values.img,
+          userId: 1,
         })
       : axiosCf.put(`product/${form?.id}`, {
           name: values.name,

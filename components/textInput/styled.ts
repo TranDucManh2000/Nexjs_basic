@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Input } from "antd";
-import { ReceivedProps } from "./hook";
 import theme from "../../theme";
 
 const InputGrop = styled.div`
