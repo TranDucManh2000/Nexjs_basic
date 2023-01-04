@@ -17,11 +17,11 @@ const TopLayout: FC<ReceivedProps> = ({ dataUser, dataFeatured }) => {
                   avatar={
                     <Avatar
                       className="avatar"
-                      src="https://www.dungplus.com/wp-content/uploads/2019/12/girl-xinh-600x600.jpg"
+                      src="https://scontent.fhan5-11.fna.fbcdn.net/v/t39.30808-1/283340299_1063601274365849_4795855512102228157_n.jpg?stp=dst-jpg_p240x240&_nc_cat=103&ccb=1-7&_nc_sid=7206a8&_nc_ohc=10aySNwCBeYAX-L_KAC&_nc_ht=scontent.fhan5-11.fna&oh=00_AfDCZ0pP7-v7PJv4HKEkovf8PsojnkLYz1yVCcmjfjXfdg&oe=63B95BE9"
                     />
                   }
-                  title="Card title"
-                  description="This is the description"
+                  title="@TranManh"
+                  description="Developers"
                 />
               </Card>
             ))

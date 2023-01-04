@@ -20,6 +20,7 @@ const HeaderLayout: FC<ReceivedProps> = ({
   nexPage,
   authen,
   loginOut,
+  dataUser,
 }) => {
   const bell = (
     <div className="gropBell">
@@ -37,7 +38,11 @@ const HeaderLayout: FC<ReceivedProps> = ({
 
   const formUser = (
     <div className="avatar">
-      <AvatarNft title="@TranManh" description="view profile" />
+      <AvatarNft
+        title={dataUser.name}
+        dataImg={dataUser.avatar}
+        description="view profile"
+      />
       <ButtonCf className="btn" variant="warning">
         Connect Wallet
       </ButtonCf>
@@ -87,7 +92,7 @@ const HeaderLayout: FC<ReceivedProps> = ({
         {authen ? (
           <PopoverNft active={true} content={formUser}>
             <div>
-              <AvatarNft />
+              <AvatarNft dataImg={dataUser.avatar} />
             </div>
           </PopoverNft>
         ) : (

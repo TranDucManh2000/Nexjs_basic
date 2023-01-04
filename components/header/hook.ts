@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getAuthent } from "../../config/libraries/CfAxios";
-import { useSelector } from "react-redux";
+import { axiosCf, getAuthent } from "../../config/libraries/CfAxios";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { setUser } from "../../pages/features/login/authenSlice";
 
 export type ReceivedProps = Record<string, any>;
 
@@ -35,8 +36,10 @@ const useHeader = (props: ReceivedProps) => {
   const authenStore = useSelector(
     (state: RootState) => state.authenticator.authen
   );
+  const dataUser = useSelector((state: RootState) => state.authenticator.user);
   const [authen, setAuthent] = useState<any>("");
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const nexPage = (e: string) => {
     router.push(e);
@@ -49,6 +52,14 @@ const useHeader = (props: ReceivedProps) => {
 
   useEffect(() => {
     setAuthent(getAuthent());
+    (async () => {
+      try {
+        const {
+          data: { data },
+        } = await axiosCf.get("user/profile/your");
+        dispatch(setUser(data));
+      } catch (error) {}
+    })();
   }, [authenStore]);
 
   return {
@@ -57,6 +68,7 @@ const useHeader = (props: ReceivedProps) => {
     nexPage,
     authen,
     loginOut,
+    dataUser,
   };
 };
 

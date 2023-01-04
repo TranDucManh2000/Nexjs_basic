@@ -1,5 +1,6 @@
 import { Image } from "antd";
 import { FC } from "react";
+import { arrayProducts } from "../../pages/features/home/component/market/hook";
 import AvatarNft from "../avatar";
 import ButtonCf from "../button";
 import GropComment from "../gropComment";
@@ -11,7 +12,7 @@ const ProductLayout: FC<ReceivedProps> = ({ arrayProduct, nexPage }) => {
   return (
     <ProductWrapper>
       {arrayProduct
-        ? arrayProduct.map((item: any, index: number) => (
+        ? arrayProduct.map((item: arrayProducts, index: number) => (
             <div className="marketItem" key={index}>
               <Image
                 className="itemImg"
@@ -24,11 +25,14 @@ const ProductLayout: FC<ReceivedProps> = ({ arrayProduct, nexPage }) => {
               <ListCoins />
               <div className="info">
                 <h5>Owned by</h5>
-                <h3>0.153 BNB</h3>
+                <h3>{item.coins} BNB</h3>
               </div>
               <div className="info">
-                <AvatarNft title="@Mansu" dataLink="/features/profile" />
-                <h6>$ 0.153 </h6>
+                <AvatarNft
+                  title={`@${item.name}`}
+                  dataLink="/features/profile"
+                />
+                <h6>${item.coins}</h6>
               </div>
               <div className="info">
                 <div></div>

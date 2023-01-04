@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { axiosCf } from "../../../config/libraries/CfAxios";
-import { setAuthen } from "./authenSlice";
+import { setAuthen, setUser } from "./authenSlice";
 
 export type ReceivedProps = Record<string, any>;
 
@@ -25,16 +25,24 @@ const useLogin = (props: ReceivedProps) => {
   };
 
   const onFinish = (values: any) => {
-    axiosCf
-      .post("user/login", {
-        email: values.username,
-        password: values.password,
-      })
-      .then(function (response) {
-        response.data.status === 200
-          ? addAuthen(response.data.accsetToken)
-          : null;
-      });
+    (async () => {
+      try {
+        const {
+          data: { accsetToken, data },
+        } = await axiosCf.post("user/login", {
+          email: values.username,
+          password: values.password,
+        });
+        addAuthen(accsetToken);
+        dispatch(
+          setUser({
+            avatar: data.avatar,
+            email: data.email,
+            name: data.name,
+          })
+        );
+      } catch (error) {}
+    })();
   };
 
   const onRegister = (values: any) => {

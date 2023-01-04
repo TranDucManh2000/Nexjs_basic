@@ -19,7 +19,11 @@ const AvatarLayout: FC<ReceivedProps> = ({ ...props }) => {
         avatar={
           <Avatar
             className="avatar"
-            src="https://www.dungplus.com/wp-content/uploads/2019/12/girl-xinh-600x600.jpg"
+            src={
+              props.dataImg
+                ? props.dataImg
+                : "https://www.dungplus.com/wp-content/uploads/2019/12/girl-xinh-600x600.jpg"
+            }
           />
         }
         title={

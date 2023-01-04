@@ -5,6 +5,7 @@ export type ReceivedProps = AvatarProps & {
   description?: string;
   timeLine?: string;
   dataLink?: string;
+  dataImg?: string;
 };
 
 const useAvatar = (props: ReceivedProps) => {
