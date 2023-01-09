@@ -18,9 +18,8 @@ import HeaderWrapper from "./styled";
 const HeaderLayout: FC<ReceivedProps> = ({
   dataMenu,
   nexPage,
-  authen,
   loginOut,
-  dataUser,
+  userStore,
 }) => {
   const bell = (
     <div className="gropBell">
@@ -38,11 +37,16 @@ const HeaderLayout: FC<ReceivedProps> = ({
 
   const formUser = (
     <div className="avatar">
-      <AvatarNft
-        title={dataUser.name}
-        dataImg={dataUser.avatar}
-        description="view profile"
-      />
+      {userStore ? (
+        <AvatarNft
+          title={userStore.name}
+          dataImg={userStore.avatar}
+          description="view profile"
+        />
+      ) : (
+        ""
+      )}
+
       <ButtonCf className="btn" variant="warning">
         Connect Wallet
       </ButtonCf>
@@ -73,7 +77,7 @@ const HeaderLayout: FC<ReceivedProps> = ({
       </div>
       <div>
         <SearchNft />
-        {authen && (
+        {userStore && (
           <>
             <PopoverNft active={true} content={bell}>
               <div className="bell">
@@ -89,10 +93,10 @@ const HeaderLayout: FC<ReceivedProps> = ({
           </>
         )}
         <ButtonCf variant="default">Create NFT</ButtonCf>
-        {authen ? (
+        {userStore ? (
           <PopoverNft active={true} content={formUser}>
             <div>
-              <AvatarNft dataImg={dataUser.avatar} />
+              <AvatarNft dataImg={userStore.avatar} />
             </div>
           </PopoverNft>
         ) : (

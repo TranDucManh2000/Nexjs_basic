@@ -8,7 +8,7 @@ const { Panel } = Collapse;
 
 const CollapseLayout: FC<ReceivedProps> = ({ ...props }) => {
   const onChange = (key: string | string[]) => {
-    console.log(key);
+    // console.log(key);
   };
   return (
     <CollapseWrapper>

@@ -6,7 +6,7 @@ export type ReceivedProps = Record<string, any>;
 const arrayProduct = [1, 2, 3, 4, 1];
 
 const useProfile = (props: ReceivedProps) => {
-  const authen = useSelector((state: RootState) => state.authenticator.authen);
+  const authen = useSelector((state: RootState) => state.authenticator.user);
   const [keyTab, setKeyTab] = useState<number>(0);
   const onChange = (key: number) => {
     setKeyTab(key);
@@ -14,11 +14,11 @@ const useProfile = (props: ReceivedProps) => {
   const [isShowing, setisShowing] = useState(false);
 
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    // console.log("Failed:", errorInfo);
   };
 
   return {

@@ -37,17 +37,17 @@ const useMarket = (props: ReceivedProps) => {
     (async () => {
       try {
         const {
-          data: { result },
-        } = await axiosCf.get("/product");
-        setArrayProduct(result);
+          data: { data },
+        } = await axiosCf.get("/products");
+        setArrayProduct(data);
       } catch (error) {}
     })();
     (async () => {
       try {
         const {
-          data: { result },
+          data: { data },
         } = await axiosCf.get("/category");
-        setListCategory(listCategory.concat(result));
+        setListCategory(listCategory.concat(data));
       } catch (error) {}
     })();
   }, []);

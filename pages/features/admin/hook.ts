@@ -13,10 +13,11 @@ export interface ProductReponse {
   img: string;
   userId?: number;
 }
+const column = ["name", "describes", "coins", "categoryId", "img", "userId"];
 
 const useAdmin = (props: ReceivedProps) => {
   const [columns, setColumns] = useState<ColumnsType<ProductReponse>>([]);
-  const [data, setData] = useState<any>();
+  const [datas, setDatas] = useState<any>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [method, setmethod] = useState<string | undefined>(undefined);
   const [form, setForm] = useState<ProductReponse>();
@@ -25,13 +26,10 @@ const useAdmin = (props: ReceivedProps) => {
   useEffect(() => {
     (async () => {
       try {
-        const {
-          data: { result },
-        } = await axiosCf.get("product/colum");
         setColumns(
-          Object.values(result).map(({ COLUMN_NAME }: any, index: number) => ({
-            title: COLUMN_NAME,
-            dataIndex: COLUMN_NAME,
+          Object.values(column).map((item: any, index: number) => ({
+            title: item,
+            dataIndex: item,
             key: index,
           }))
         );
@@ -40,10 +38,10 @@ const useAdmin = (props: ReceivedProps) => {
     (async () => {
       try {
         const {
-          data: { result },
-        } = await axiosCf.get("product");
-        setData(
-          Object.values(result).map((item: any, index: number) => ({
+          data: { data },
+        } = await axiosCf.get("products");
+        setDatas(
+          Object.values(data).map((item: any, index: number) => ({
             ...item,
             key: index,
           }))
@@ -53,9 +51,9 @@ const useAdmin = (props: ReceivedProps) => {
     (async () => {
       try {
         const {
-          data: { result },
+          data: { data },
         } = await axiosCf.get("category");
-        setCategory(result);
+        setCategory(data);
       } catch (error) {}
     })();
   }, []);
@@ -70,7 +68,7 @@ const useAdmin = (props: ReceivedProps) => {
 
   const onAction = (event: ProductReponse, methods: string) => {
     if (methods === "delete") {
-      axiosCf.delete(`product/${event.id}`);
+      axiosCf.delete(`products/${event.id}`);
     } else {
       setForm(event);
       setmethod(methods);
@@ -79,31 +77,30 @@ const useAdmin = (props: ReceivedProps) => {
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    // console.log("Failed:", errorInfo);
   };
   const onFinish = (values: ProductReponse) => {
-    console.log("values", values);
-
     method === "post"
-      ? axiosCf.post("product", {
+      ? axiosCf.post("/products", {
           name: values.name,
           describes: values.describes,
-          coins: values.coins,
+          coins: Number(values.coins),
           categoryId: values.categoryId,
           img: values.img,
           userId: 1,
         })
-      : axiosCf.put(`product/${form?.id}`, {
+      : axiosCf.put(`products/${form?.id}`, {
           name: values.name,
           describes: values.describes,
-          coins: values.coins,
+          coins: Number(values.coins),
           categoryId: values.categoryId,
           img: values.img,
+          userId: 1,
         });
   };
   return {
     ...props,
-    data,
+    datas,
     onTab,
     columns,
     onAction,

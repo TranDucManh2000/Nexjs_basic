@@ -11,7 +11,7 @@ import AdminWrapper from "./styled";
 const { Option } = Select;
 
 const AdminLayout: FC<ReceivedProps> = ({
-  data,
+  datas,
   onTab,
   columns,
   onAction,
@@ -132,7 +132,7 @@ const AdminLayout: FC<ReceivedProps> = ({
                       ]
                     : []
                 }
-                dataSource={data}
+                dataSource={datas}
                 scroll={{ x: 1500, y: 800 }}
               />
             ),

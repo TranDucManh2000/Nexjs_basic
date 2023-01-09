@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { axiosCf } from "../../../config/libraries/CfAxios";
-import { setAuthen, setUser } from "./authenSlice";
+import { setUser } from "./authenSlice";
 
 export type ReceivedProps = Record<string, any>;
 
@@ -11,50 +11,43 @@ const useLogin = (props: ReceivedProps) => {
   const dispatch = useDispatch();
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    // console.log("Failed:", errorInfo);
   };
 
   const setModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  const addAuthen = (authent: string) => {
-    localStorage.setItem("authent", authent);
-    dispatch(setAuthen(authent));
+  const addAuthen = (authent: any) => {
+    localStorage.setItem("user", JSON.stringify(authent));
+    dispatch(setUser(authent));
     setModal();
   };
 
   const onFinish = (values: any) => {
     (async () => {
       try {
-        const {
-          data: { accsetToken, data },
-        } = await axiosCf.post("user/login", {
+        const { data } = await axiosCf.post("authentication", {
           email: values.username,
           password: values.password,
+          strategy: "local",
         });
-        addAuthen(accsetToken);
-        dispatch(
-          setUser({
-            avatar: data.avatar,
-            email: data.email,
-            name: data.name,
-          })
-        );
+        addAuthen({ ...{ accessToken: data.accessToken }, ...data.user });
       } catch (error) {}
     })();
   };
 
   const onRegister = (values: any) => {
     axiosCf
-      .post("/user/register", {
+      .post("users", {
         email: values.email,
         password: values.password,
         name: values.name,
       })
       .then(function (response) {
-        response.data.status === 200 ? setModal() : null;
+        // console.log(response);
       });
+    setModal();
   };
 
   return {
