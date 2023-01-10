@@ -10,10 +10,8 @@ const CartLayout: FC<ReceivedProps> = ({
   showChat,
   setShowChat,
   onFinish,
+  onFinishFailed,
 }) => {
-  const onFinishFailed = (errorInfo: any) => {
-    // console.log("Failed:", errorInfo);
-  };
   return (
     <CartWrapper>
       <div className="gropCart">

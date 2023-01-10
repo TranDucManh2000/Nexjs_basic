@@ -25,7 +25,7 @@ const MarketLayout: FC<ReceivedProps> = ({
                   variant={inMarket === index ? "warning" : "default"}
                   hight={28}
                   font={14}
-                  onClick={() => onMarket(index)}
+                  onClick={() => onMarket(index, category.id)}
                 >
                   {category.name}
                 </ButtonCf>

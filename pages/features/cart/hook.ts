@@ -29,12 +29,17 @@ const useCart = (props: ReceivedProps) => {
     });
   };
 
+  const onFinishFailed = (errorInfo: any) => {
+    // console.log("Failed:", errorInfo);
+  };
+
   return {
     ...props,
     users,
     showChat,
     setShowChat,
     onFinish,
+    onFinishFailed,
   };
 };
 

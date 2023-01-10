@@ -12,8 +12,19 @@ export interface ProductReponse {
   categoryId: number;
   img: string;
   userId?: number;
+  userName: string;
+  userAvatar: string;
 }
-const column = ["name", "describes", "coins", "categoryId", "img", "userId"];
+const column = [
+  "name",
+  "describes",
+  "coins",
+  "categoryId",
+  "img",
+  "userId",
+  "userName",
+  "userAvatar",
+];
 
 const useAdmin = (props: ReceivedProps) => {
   const [columns, setColumns] = useState<ColumnsType<ProductReponse>>([]);
@@ -87,7 +98,9 @@ const useAdmin = (props: ReceivedProps) => {
           coins: Number(values.coins),
           categoryId: values.categoryId,
           img: values.img,
-          userId: 1,
+          userId: Number(values.userId),
+          userName: values.userName,
+          userAvatar: values.userAvatar,
         })
       : axiosCf.put(`products/${form?.id}`, {
           name: values.name,
@@ -95,7 +108,9 @@ const useAdmin = (props: ReceivedProps) => {
           coins: Number(values.coins),
           categoryId: values.categoryId,
           img: values.img,
-          userId: 1,
+          userId: Number(values.userId),
+          userName: values.userName,
+          userAvatar: values.userAvatar,
         });
   };
   return {

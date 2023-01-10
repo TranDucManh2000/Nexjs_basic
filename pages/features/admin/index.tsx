@@ -39,7 +39,7 @@ const AdminLayout: FC<ReceivedProps> = ({
         >
           {columns.map((item: any, index: number) =>
             item.title === "id" ? undefined : item.title ===
-              "userId" ? undefined : item.title === "categoryId" ? (
+              "" ? undefined : item.title === "categoryId" ? (
               <div key={index}>
                 <h2>{item.title}</h2>
                 <Form.Item

@@ -1,5 +1,5 @@
 import { CommentOutlined } from "@ant-design/icons";
-import { Avatar, Form, Image, Tabs } from "antd";
+import { Avatar, Form, Image, Select, Tabs } from "antd";
 import { FC } from "react";
 import ButtonCf from "../../../components/button";
 import ListCoins from "../../../components/listCoins";
@@ -16,6 +16,8 @@ export interface arrayTab {
 }
 [];
 
+const { Option } = Select;
+
 const ProfileLayout: FC<ReceivedProps> = ({
   keyTab,
   onChange,
@@ -25,6 +27,9 @@ const ProfileLayout: FC<ReceivedProps> = ({
   onFinish,
   onFinishFailed,
   authen,
+  column,
+  category,
+  contextHolder,
 }) => {
   const listTab = [
     {
@@ -49,51 +54,63 @@ const ProfileLayout: FC<ReceivedProps> = ({
               headerTitle="Create NFT"
             >
               <Form
+                style={{ color: "#fff" }}
                 name="basic"
-                initialValues={{ remember: true }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
-                className="formNft"
               >
                 <h1>Create Item</h1>
                 <p> Start minting your one of a kind NFT and enjoy!</p>
                 <ListCoins />
-                <Form.Item
-                  name="title"
-                  rules={[
-                    { required: true, message: "Please input your Title!" },
-                  ]}
-                >
-                  <h3>Title</h3>
-                  <TextInput placeholder="Title NFT" />
-                </Form.Item>
-
-                <Form.Item
-                  name="url"
-                  rules={[
-                    { required: true, message: "Please input your url NFT!" },
-                  ]}
-                >
-                  <h3>Url</h3>
-                  <TextInput placeholder="Url NFT" />
-                </Form.Item>
-
-                <Form.Item
-                  name="price"
-                  rules={[
-                    { required: true, message: "Please input your price NFT!" },
-                  ]}
-                >
-                  <h3>Price</h3>
-                  <TextInput placeholder="Price NFT" />
-                </Form.Item>
-
+                {column.map((item: any, index: number) =>
+                  item === "categoryId" ? (
+                    <div key={index}>
+                      <h2>{item}</h2>
+                      <Form.Item
+                        style={{ color: "#fff" }}
+                        name={item}
+                        rules={[
+                          {
+                            required: true,
+                            message: `Please input your ${item}!`,
+                          },
+                        ]}
+                      >
+                        <Select placeholder="Select Category" allowClear>
+                          {category.length > 0
+                            ? category.map((cate: any, index: number) => (
+                                <Option value={cate.id} key={index}>
+                                  {cate.name}
+                                </Option>
+                              ))
+                            : ""}
+                        </Select>
+                      </Form.Item>
+                    </div>
+                  ) : (
+                    <div key={index}>
+                      <h2>{item}</h2>
+                      <Form.Item
+                        style={{ color: "#fff" }}
+                        name={item}
+                        rules={[
+                          {
+                            required: true,
+                            message: `Please input your ${item}!`,
+                          },
+                        ]}
+                      >
+                        <TextInput placeholder={item} />
+                      </Form.Item>
+                    </div>
+                  )
+                )}
                 <Form.Item>
                   <ButtonCf
                     style={{ width: "100%", marginLeft: "-5px" }}
                     variant="warning"
-                    // onClick={() => setModal()}
+                    htmlType="submit"
                   >
                     Create
                   </ButtonCf>
@@ -122,6 +139,7 @@ const ProfileLayout: FC<ReceivedProps> = ({
   ];
   return (
     <ProfileWrapper>
+      {contextHolder}
       <Image
         className="imgHeader"
         preview={false}

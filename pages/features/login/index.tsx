@@ -14,9 +14,11 @@ const LoginLayout: FC<ReceivedProps> = ({
   typeModal,
   setTypeModal,
   onRegister,
+  contextHolder,
 }) => {
   return (
     <LoginWrapper>
+      {contextHolder}
       <ButtonCf variant="warning" onClick={setModal}>
         Register/Login
       </ButtonCf>

@@ -16,6 +16,8 @@ export interface arrayProducts {
   categoryId: number;
   img: number;
   userId: number;
+  userName: string;
+  userAvatar: string;
 }
 [];
 
@@ -29,8 +31,25 @@ const useMarket = (props: ReceivedProps) => {
     },
   ]);
 
-  const onMarket = (e: number) => {
-    setInMarket(e);
+  const onMarket = (index: number, id: number) => {
+    setInMarket(index);
+    id === 0
+      ? (async () => {
+          try {
+            const {
+              data: { data },
+            } = await axiosCf.get("/products");
+            setArrayProduct(data);
+          } catch (error) {}
+        })()
+      : (async () => {
+          try {
+            const {
+              data: { data },
+            } = await axiosCf.get(`products/?categoryId=${id}`);
+            setArrayProduct(data);
+          } catch (error) {}
+        })();
   };
 
   useEffect(() => {

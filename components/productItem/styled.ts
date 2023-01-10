@@ -14,10 +14,12 @@ const ProductWrapper = styled.div`
     border-radius: 10px;
     padding: 10px;
     cursor: pointer;
+    min-width: 350px;
     .itemImg {
       border-radius: 10px;
       background-color: ${theme.Background.gray};
       margin-bottom: 20px;
+      min-height: 300px;
     }
     :hover {
       border: 2px solid ${theme.Colors.warning};

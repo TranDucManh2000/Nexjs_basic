@@ -14,11 +14,7 @@ const ProductLayout: FC<ReceivedProps> = ({ arrayProduct, nexPage }) => {
       {arrayProduct
         ? arrayProduct.map((item: arrayProducts, index: number) => (
             <div className="marketItem" key={index}>
-              <Image
-                className="itemImg"
-                src="https://www.dungplus.com/wp-content/uploads/2019/12/girl-xinh-600x600.jpg"
-                preview={false}
-              />
+              <Image className="itemImg" src={`${item.img}`} preview={false} />
               <h2>{item.name}</h2>
               <GropComment heart={0} comment={0} />
               <h5>Blockchain</h5>
@@ -29,8 +25,9 @@ const ProductLayout: FC<ReceivedProps> = ({ arrayProduct, nexPage }) => {
               </div>
               <div className="info">
                 <AvatarNft
-                  title={`@${item.name}`}
-                  dataLink="/features/profile"
+                  title={`@${item.userName}`}
+                  dataLink={`/features/profile/${item.userId}`}
+                  dataImg={item.userAvatar}
                 />
                 <h6>${item.coins}</h6>
               </div>
